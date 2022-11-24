@@ -18,17 +18,12 @@ from typing import Optional
 
 class Solution:
     def isAlienSorted(self, words: List[str], order: str) -> bool:
-        # if len(set(words)) == 1 :
-        #     return True
-        # for i in range(len(words) - 1):
-        #     for (ch1, ch2) in zip(words[i], words[i + 1]):
-        #         print(ch1, ch2)
-        #         if order.index(ch2) > order.index(ch1):
-        #             break
-        #         else:
-        #             return False
-        # return True
-        for word in words:
+        if len(set(words)) == 1:
+            return True
+
+        temp = pairwise([order.index(c) for c in word] for word in words)
+
+        return all(s <= t for s, t in temp)
 
 
 

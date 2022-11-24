@@ -29,3 +29,4 @@ class Solution:
 sol = Solution()
 res = sol.dailyTemperatures([73,74,75,71,69,72,76,73])
 print(res)
+print([1,2,3] < [1,2,5])
