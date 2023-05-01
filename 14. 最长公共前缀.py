@@ -24,7 +24,19 @@ class Solution:
                 break
         return "".join(strs[0][:index])
 
+    def longestCommonPrefix2(self, strs: List[str]) -> str:
+
+        min_len = min([len(x) for x in strs])
+        index = 0
+        for index in range(min_len):
+            ch = strs[0][index]
+            if all([strs[i][index] == ch for i in range(len(strs))]):
+                index += 1
+            else:
+                break
+        return strs[0][:index]
+
 
 sol = Solution()
-res = sol.longestCommonPrefix(["flower","flow","flight"])
+res = sol.longestCommonPrefix2(["flower","flow","flight"])
 print(res)
