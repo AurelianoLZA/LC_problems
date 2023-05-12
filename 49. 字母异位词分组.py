@@ -27,8 +27,17 @@ class Solution:
             res.append(value)
         return res
 
+    def groupAnagrams2(self, strs: List[str]) -> List[List[str]]:
+        dict = collections.defaultdict(list)
+        for str in strs:
+            dict["".join(sorted(str))].append(str)
+        res = []
+        for value in dict.values():
+            res.append(value)
+        return res
+
 
 
 sol = Solution()
-res = sol.groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
+res = sol.groupAnagrams2(["eat", "tea", "tan", "ate", "nat", "bat"])
 print(res)

@@ -30,11 +30,20 @@ class Solution:
         ls = list(filter(helper, words))
         return ls
 
-
+    def findWords2(self, words: List[str]) -> List[str]:
+        lines = [ "qwertyuiop" , "asdfghjkl", "zxcvbnm"]
+        res=  []
+        def helper(word):
+            l = ""
+            for line in lines:
+                if word[0].lower() in line:
+                    l = line
+            return False not in [ch.lower() in l for ch in word]
+        return list(filter(helper, words))
 
 
 
 
 sol = Solution()
-res = sol.findWords(["Hello","Alaska","Dad","Peace"])
+res = sol.findWords2(["Hello","Alaska","Dad","Peace"])
 print(res)

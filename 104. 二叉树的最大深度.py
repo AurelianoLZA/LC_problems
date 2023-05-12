@@ -34,3 +34,14 @@ class Solution:
         dfs(root, 0)
         return res
 
+    def maxDepth2(self, root: Optional[TreeNode]) -> int:
+        res = 0
+        def dfs(node, depth):
+            nonlocal res
+            if node is None:
+                res = max(res, depth)
+                return
+            dfs(node.left, depth+1)
+            dfs(node.right, depth+1)
+        dfs(root, 0)
+        return res

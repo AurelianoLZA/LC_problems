@@ -43,10 +43,21 @@ class Solution:
                 return word
         return ""
 
+    def shortestCompletingWord2(self, licensePlate: str, words: List[str]) -> str:
 
+        res = " " * (max([len(word) for word in words])+1)
+        counter = collections.Counter(list(map(lambda z: z.lower(), list(filter(lambda x : x.isalpha(), list(licensePlate))))))
+        for word in words:
+            flag = True
+            counter_word = collections.Counter(word)
+            for key, value in counter.items():
+                if key not in counter_word.keys() or value > counter_word[key]:
+                    flag &= False
+            if flag and len(word) < len(res):
+                res = word
+        return res
 
 
 sol = Solution()
-res = sol.shortestCompletingWord(licensePlate = "GrC8950",
-                                 words = ["measure","other","every","base","according","level","meeting","none","marriage","rest"])
+res = sol.shortestCompletingWord2(licensePlate = "1s3 PSt", words = ["step", "steps", "stripe", "stepple"])
 print(res)

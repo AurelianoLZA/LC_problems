@@ -25,7 +25,17 @@ class Solution:
                     res.append(key)
         return res
 
+    def intersect2(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        res = []
+        c1, c2 = collections.Counter(nums1), collections.Counter(nums2)
+        for val in set(nums1):
+            if val in set(nums2):
+                for _ in range(min(c1.get(val), c2.get(val))):
+                    res.append(val)
+        return res
+
+
 
 sol = Solution()
-res = sol.intersect(nums1 = [1,2,2,1], nums2 = [2,2])
+res = sol.intersect2(nums1 = [1,2,2,1], nums2 = [2,2])
 print(res)

@@ -16,13 +16,26 @@ class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
         def backtrack(index):
             if index == len(nums):
-                res.append(nums)
+                res.append(nums[:])
             for i in range(index, len(nums)):
                 nums[i], nums[index] = nums[index], nums[i]
                 backtrack(index+1)
                 nums[i], nums[index] = nums[index], nums[i]
         res = []
         backtrack(0)
+        return res
+
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        def dfs(index, nums, res):
+            if index == len(nums):
+                res.append(nums)
+                return
+            for i in range(index, len(nums)):
+                nums[i], nums[index] = nums[index], nums[i]
+                dfs(i+1, nums, res)
+                nums[i], nums[index] = nums[index], nums[i]
+        res = []
+        dfs(0, nums, res)
         return res
 
 

@@ -14,6 +14,15 @@ from typing import Optional
 
 class Solution:
     def minDepth(self, root: Optional[TreeNode]) -> int:
+        def dfs(node):
+            if root is None:
+                return 0
+            if node.left is None and node.right is None:
+                return 1
+            m1 = dfs(node.left)
+            m2 = dfs(node.right)
+            if node.left is None or node.right is None:
+                return
 
 
 
